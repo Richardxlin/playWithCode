@@ -13,12 +13,21 @@ class Counter extends React.Component {
   componentWillMount(){
     this.setState({m: 2})
   }
+  componentWillReceiveProps(nextProps) {
+    this.setState({moreThanThree: nextProps.val > 3})
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.counter > 3;
+  }
   render() {
     console.log('rendering')
     return <button onClick={this.update}>{this.state.counter}</button>
   }
   componentDidMount(){
     this.inc = setInterval(this.update, 500)
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('prevState', prevState)
   }
   componentWillUnmount(){
     clearInterval(this.inc)
