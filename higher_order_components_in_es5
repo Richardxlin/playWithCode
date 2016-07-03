@@ -1,0 +1,63 @@
+import React from 'react';
+
+function Mixin(InnerComponent) {
+  let react = new React.Component();
+  react.prototype = React.Component.prototype;
+  react.state = {
+    counter: 0
+  };
+  react.update = react.update.bind(react)
+
+  function update(){
+    react.setState({
+      counter: react.state.counter + 1
+    })
+  }
+
+  function componentWillMount() {
+    console.log('will mount')
+  }
+  function render(){
+    return (
+      <div>
+        <InnerComponent
+        update={this.update}
+        {...this.state}
+        {...this.props} />
+      </div>
+    )
+  }
+  function componentDidMount() {
+    console.log('mounted')
+  }
+
+}
+
+const Button = (props) => {
+  return <button onClick={props.update}>
+          {props.txt} - {props.counter}
+         </button>
+}
+
+const PlusOneAdd = (props) => {
+  return <a onMouseEnter={props.update}>
+    {props.txt}: {props.counter}
+    </a>
+}
+
+let ButtonMixed = Mixin(Button)
+let PlusOneAddMixed = Mixin(PlusOneAdd)
+
+class HigherOrderComponentsInES5 extends React.Component {
+
+  render(){
+    return (
+      <div>
+        <ButtonMixed txt="Button" />
+        <PlusOneAddMixed txt="Add One:" />
+      </div>
+    );
+  }
+}
+
+export default HigherOrderComponentsInES5

@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ChildProp from './childprop';
-import LifeCycle from './lifecycle'
+import LifeCycle from './lifecycle';
+import HigherOrderComponents from './higher_order_components';
+import HigherOrderComponentsInES5 from './higher_order_components_in_es5';
+
 
 class App extends React.Component {
   constructor(){
@@ -25,6 +28,7 @@ class App extends React.Component {
   render(){
     return (
       <div>
+        <ComponentTitles title="Refs"/>
         <Slider ref="red" update={this.update}/>
         {this.state.red}
         <br />
@@ -34,11 +38,24 @@ class App extends React.Component {
         <Slider ref="blue" update={this.update}/>
         {this.state.blue}
         <hr />
+        <ComponentTitles title="Child Prop"/>
         <ChildProp />
         <hr />
+        <ComponentTitles title="Life Cycle" />
         <LifeCycle />
+        <hr />
+        <ComponentTitles title="Higher Order Components" />
+        <HigherOrderComponents />
+        <ComponentTitles title="Higher Order Components in ES5" />
+        <HigherOrderComponentsInJS />
       </div>
     )
+  }
+}
+
+class ComponentTitles extends React.Component {
+  render() {
+    return <h3>{this.props.title}</h3>
   }
 }
 
