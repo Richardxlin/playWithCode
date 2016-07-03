@@ -5,6 +5,8 @@ import LifeCycle from './lifecycle';
 import HigherOrderComponents from './higher_order_components';
 //for some reason higher_order_components_in_es5 does not work
 import ComponentInES2015 from './component_in_es2015';
+import ComposableComponent from './composable_component';
+import DataGeneratedComponents from './data_generated_component';
 
 
 class App extends React.Component {
@@ -49,6 +51,10 @@ class App extends React.Component {
         <HigherOrderComponents />
         <ComponentTitles title="Component in ES5" />
         <ComponentInES2015 />
+        <ComponentTitles title="Composable Component" />
+        <ComposableComponent />
+        <ComponentTitles title="Data Generated Component" />
+        <DataGeneratedComponents />
       </div>
     )
   }
