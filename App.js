@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import ChildProp from './childprop';
 import LifeCycle from './lifecycle';
 import HigherOrderComponents from './higher_order_components';
-import HigherOrderComponentsInES5 from './higher_order_components_in_es5';
+//for some reason higher_order_components_in_es5 does not work
+import ComponentInES2015 from './component_in_es2015';
 
 
 class App extends React.Component {
@@ -46,8 +47,8 @@ class App extends React.Component {
         <hr />
         <ComponentTitles title="Higher Order Components" />
         <HigherOrderComponents />
-        <ComponentTitles title="Higher Order Components in ES5" />
-        <HigherOrderComponentsInJS />
+        <ComponentTitles title="Component in ES5" />
+        <ComponentInES2015 />
       </div>
     )
   }
