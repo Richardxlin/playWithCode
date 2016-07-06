@@ -1,3 +1,3 @@
 Explore some reactjs feature
 
-Run `npm start` to run webpack server
+Run `npm start` in reactjs folder to run webpack server
